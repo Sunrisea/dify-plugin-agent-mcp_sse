@@ -107,6 +107,7 @@ class ReActAgentStrategy(AgentStrategy):
         servers_config_json = react_params.mcp_servers_config
         if servers_config_json:
             try:
+                servers_config_json = servers_config_json.strip('"')
                 servers_config_json = re.sub(r"(?<!\\)'", '"', servers_config_json)
                 servers_config = json.loads(servers_config_json)
             except json.JSONDecodeError as e:
